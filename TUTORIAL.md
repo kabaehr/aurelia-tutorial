@@ -28,6 +28,10 @@ Once you have those prerequisites installed you can install the Aurelia CLI itse
 
 ## Basic tutorial
 
+### 1. Creating and running a new app
 
+1. Run `au new` on the command line. Accept all defaults.
+2. Change directory to the newly created `aurelia-app` folder and run `au run --watch`.
+3. Wait for the build to be finished, open a web browser and navigate to [http://localhost:9000](http://localhost:9000). You should see a web page displaying "Hello World!".
 
 ## Advanced tutorial
