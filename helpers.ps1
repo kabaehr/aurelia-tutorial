@@ -3,5 +3,6 @@ function prev {
 }
 
 function next {
-    . git checkout $(git rev-list --topo-order HEAD..9a367d9ba53cb211b34960d92f34fe9524c98ece | select-object -last 1)
+    $finalSha = get-content .\head.sha1
+    . git checkout $(git rev-list --topo-order HEAD..$finalSha | select-object -last 1)
 }
