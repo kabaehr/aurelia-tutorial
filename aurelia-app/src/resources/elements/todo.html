@@ -1,0 +1,4 @@
+<template>
+    <require from="./todo.css"></require>
+    <span class="${item.done ? 'done' : ''}">${item.description} - ${item.deadline} - ${item.priority}</span> <button show.bind="!item.done" click.delegate="done()">Done</button>
+</template>
