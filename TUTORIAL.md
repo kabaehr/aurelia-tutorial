@@ -18,7 +18,7 @@ Taken from [here](http://aurelia.io/hub.html#/doc/article/aurelia/framework/late
 
 ### Requirements
 
-In this tutorial we will primarily be using the Aurelia CLI. Prerequisites for this are 
+In this tutorial we will primarily be using the Aurelia CLI. Prerequisites for this are
 - NodeJS version 4.x or above
 - Git
 
@@ -37,7 +37,7 @@ Once you have those prerequisites installed you can install the Aurelia CLI itse
 ### 2. Router setup and first module
 
 4. Replace `<h1>${message}</h1>` in `app.html` with `<router-view></router-view>`.
-5. Add `configureRouter(config, router)` function in `app.js` and remove the constructor. Full code for the function: 
+5. Add `configureRouter(config, router)` function in `app.js` and remove the constructor. Full code for the function:
 
 ```
 configureRouter(config, router) {
@@ -63,7 +63,7 @@ configureRouter(config, router) {
 ```
 export class Index {
 }
-``` 
+```
 
 ### 3. Dependency injection, services and models
 
@@ -101,7 +101,7 @@ todo/add.html:
 
 todo/add.js:
 ```
-export class Add {    
+export class Add {
 }
 ```
 
@@ -123,7 +123,7 @@ import { TodoService } from './todo-service';
 ```
 
 Add a static inject method at the top of each class:
-``` 
+```
 static inject() { return [TodoService]; }
 ```
 
@@ -131,6 +131,119 @@ Add/extend the constructor for each class:
 ```
 constructor(todoService) {
     this.todoService = todoService;
+}
+```
+
+### 4. Data and event binding, templating
+
+12. Add navigation from index to add route. Add the following in `todo/index.html`:
+
+```
+<a route-href="route: Add new todo">Add new todo</a>
+```
+
+13. Add event binding to the form in `todo/add.html`:
+
+```
+...
+<form submit.delegate="addTodo()">
+...
+```
+
+14. Add event handler in `todo/add.js`:
+
+```
+...
+addTodo() {
+}
+...
+```
+
+15. Add property initializer and call to it in constructor of `todo/add.js`:
+
+```
+constructor(todoService) {
+    this.todoService = todoService;
+    this.initializeProperties();
+}
+...
+initializeProperties() {
+    this.description = '';
+    this.priority = 'Medium';
+    this.deadline = new Date();
+}
+...
+```
+16. Add data binding in `todo/add.html`:
+
+```
+<template>
+    <h3>Todos</h3>
+    <h4>Add new todo</h4>
+    <form submit.delegate="addTodo()">
+        <input type="text" value.bind="description">
+        <input type="date" value.bind="deadline">
+        <select value.bind="priority">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <button type="submit">Add todo</button>
+    </form>
+</template>
+```
+
+17. Implement `addTodo()` in `todo/add.js`:
+
+```
+import { Todo } from './todo';
+...
+
+addTodo() {
+    let todo = new Todo(this.description, this.deadline, this.priority);
+    this.todoService.todos.push(todo);
+}
+```
+
+18. Add an automatic redirect in `addTodo()` in `todo/add.js`:
+
+```
+import { Router } from 'aurelia-router';
+...
+static inject() { return [TodoService, Router]; }
+...
+constructor(todoService, router) {
+    this.router = router;
+    this.todoService = todoService;
+    this.initializeProperties();
+}
+...
+addTodo() {
+    let todo = new Todo(this.description, this.deadline, this.priority);
+    this.todoService.todos.push(todo);
+    this.router.navigateToRoute('Todos');
+}
+```
+
+19. Add template and getter for todos in `todo/index.html` respectively `todo/index.js`:
+
+todo/index.html:
+```
+<template>
+    <h3>Todos</h3>
+    <a route-href="route: Add new todo">Add new todo</a>
+    <ul>
+        <li repeat.for="item of todos">
+            ${item.description} - ${item.deadline} - ${item.priority}
+        </li>
+    </ul>
+</template>
+```
+
+todo/index.js:
+```
+get todos() {
+    return this.todoService.todos;
 }
 ```
 
