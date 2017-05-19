@@ -247,4 +247,74 @@ get todos() {
 }
 ```
 
+### 5. Custom elements
+
+20. Add `resources/elements/todo.js`:
+
+```
+import { bindable, decorators } from 'aurelia-framework';
+
+export const TodoCustomElement = decorators(
+    bindable('item')
+).on(class {
+    constructor() {
+        this.item = {};
+    }
+});
+```
+
+21. Add `resources/elements/todo.html`:
+
+```
+<template>
+    ${item.description} - ${item.deadline} - ${item.priority}
+</template>
+```
+
+22. Add require and usage of custom element in `todo/index.html`:
+
+```
+<template>
+    <require from="resources/elements/todo"></require>
+    ...
+    <todo item.bind="item"></todo>
+    ...
+```
+
+23. Add done button in `resurces/elements/todo.html`:
+
+```
+<template>
+    ${item.description} - ${item.deadline} - ${item.priority} <button click.delegate="done()">Done</button>
+</template>
+```
+
+24. Add done handler in `resources/elements/todo.js`:
+
+```
+...
+done() {
+    this.item.done = true;
+} 
+...
+```
+
+25. Add 'resources/elements/todo.css':
+
+```
+.done {
+    text-decoration: line-through;
+}
+```
+
+26. Add require for new css file and class binding in `resources/elements/todo.html`. Add `show.bind` in button:
+
+```
+<template>
+    <require from="./todo.css"></require>
+    <span class="${item.done ? 'done' : ''}">${item.description} - ${item.deadline} - ${item.priority}</span> <button show.bind="!item.done" click.delegate="done()">Done</button>
+</template>
+```
+
+
 ## Advanced tutorial
