@@ -65,4 +65,73 @@ export class Index {
 }
 ``` 
 
+### 3. Dependency injection, services and models
+
+8. Add `todo/todo.js` with the following content:
+
+```
+export class Todo {
+    constructor(description, deadline, priority) {
+        this.description = description;
+        this.deadline = deadline;
+        this.priority = priority;
+    }
+}
+```
+
+9. Add a new module with `todo/add.html` and `todo/add.js`.
+
+todo/add.html:
+```
+<template>
+    <h3>Todos</h3>
+    <h4>Add new todo</h4>
+    <form>
+        <input type="text">
+        <input type="date">
+        <select>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <button type="submit">Add todo</button>
+    </form>
+</template>
+```
+
+todo/add.js:
+```
+export class Add {    
+}
+```
+
+10. Add todo/todo-service.js with the following content:
+
+```
+export class TodoService {
+    constructor() {
+        this.todos = [];
+    }
+}
+```
+
+11. Add TodoService injection to `todo/index.js` and `todo/add.js`. To do this, extend both files with the following parts:
+
+At the top of the file add:
+```
+import { TodoService } from './todo-service';
+```
+
+Add a static inject method at the top of each class:
+``` 
+static inject() { return [TodoService]; }
+```
+
+Add/extend the constructor for each class:
+```
+constructor(todoService) {
+    this.todoService = todoService;
+}
+```
+
 ## Advanced tutorial
