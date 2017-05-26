@@ -6,4 +6,8 @@ export class Index {
     constructor(todoService) {
         this.todoService = todoService;
     }
+    
+    get todos() {
+        return this.todoService.todos;
+    }
 }
