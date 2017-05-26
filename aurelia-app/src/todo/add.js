@@ -1,6 +1,6 @@
 import { TodoService } from './todo-service';
 
-export class Index {
+export class Add {
     static inject() { return [TodoService]; }
 
     constructor(todoService) {
