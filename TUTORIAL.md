@@ -64,6 +64,74 @@ Once you have those prerequisites installed you can install the Aurelia CLI itse
 export class Index {
 }
 ```
+### 3. Dependency injection, services and models
 
+8. Add `todo/todo.ts` with the following content:
+
+```
+export class Todo {
+    constructor(private description: string, private deadline: string, private priority: string) {
+    }
+}
+```
+
+9. Add a new module with `todo/add.html` and `todo/add.ts`.
+
+todo/add.html:
+```
+<template>
+    <h3>Todos</h3>
+    <h4>Add new todo</h4>
+    <form>
+        <input type="text">
+        <input type="date">
+        <select>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <button type="submit">Add todo</button>
+    </form>
+</template>
+```
+
+todo/add.ts:
+```
+export class Add {
+}
+```
+
+10. Add todo/todo-service.ts with the following content:
+
+```
+import { Todo } from './todo';
+
+export class TodoService {
+    todos: Array<Todo> = [];
+
+    constructor() {
+    }
+}
+```
+
+11. Add TodoService injection to `todo/index.ts` and `todo/add.ts`. To do this, extend both files with the following parts:
+
+At the top of the file add:
+```
+import { TodoService } from './todo-service';
+```
+
+Import the `autoinject` decorator and at the top of each class and use it above the class declaration:
+```
+import { autoinject} from 'aurelia-framework';
+
+@autoinject()
+```
+
+Add/extend the constructor for each class:
+```
+constructor(private todoService: TodoService) {
+}
+```
 
 ## Advanced tutorial
