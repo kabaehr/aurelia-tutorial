@@ -1,3 +1,9 @@
 <template>
     <h3>Todos</h3>
+    <a route-href="route: Add new todo">Add new todo</a>
+    <ul>
+        <li repeat.for="item of todos">
+            ${item.description} - ${item.deadline} - ${item.priority}
+        </li>
+    </ul>
 </template>
