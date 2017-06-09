@@ -133,5 +133,121 @@ Add/extend the constructor for each class:
 constructor(private todoService: TodoService) {
 }
 ```
+### 4. Data and event binding, templating
+
+12. Add navigation from index to add route. Add the following in `todo/index.html`:
+
+```
+<a route-href="route: Add new todo">Add new todo</a>
+```
+
+13. Add event binding to the form in `todo/add.html`:
+
+```
+...
+<form submit.delegate="addTodo()">
+...
+```
+
+14. Add event handler in `todo/add.ts`:
+
+```
+...
+addTodo() {
+}
+...
+```
+
+15. Add property initializer and call it in constructor of `todo/add.ts`:
+
+```
+...
+description: string;
+priority: string;
+deadline: Date;
+
+constructor(private todoService: TodoService) {
+    this.initializeProperties();
+}
+
+initializeProperties() {
+    this.description = '';
+    this.priority = 'Medium';
+    this.deadline = new Date();
+}
+...
+```
+16. Add data binding in `todo/add.html`:
+
+```
+<template>
+    <h3>Todos</h3>
+    <h4>Add new todo</h4>
+    <form submit.delegate="addTodo()">
+        <input type="text" value.bind="description">
+        <input type="date" value.bind="deadline">
+        <select value.bind="priority">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <button type="submit">Add todo</button>
+    </form>
+</template>
+```
+
+17. Implement `addTodo()` in `todo/add.ts`:
+
+```
+import { Todo } from './todo';
+...
+
+addTodo() {
+    let todo = new Todo(this.description, this.deadline, this.priority);
+    this.todoService.todos.push(todo);
+}
+```
+
+18. Add an automatic redirect in `addTodo()` in `todo/add.ts`:
+
+```
+import { Router } from 'aurelia-router';
+...
+static inject() { return [TodoService, Router]; }
+...
+constructor(todoService, router) {
+    this.router = router;
+    this.todoService = todoService;
+    this.initializeProperties();
+}
+...
+addTodo() {
+    let todo = new Todo(this.description, this.deadline, this.priority);
+    this.todoService.todos.push(todo);
+    this.router.navigateToRoute('Todos');
+}
+```
+
+19. Add template and getter for todos in `todo/index.html` respectively `todo/index.ts`:
+
+todo/index.html:
+```
+<template>
+    <h3>Todos</h3>
+    <a route-href="route: Add new todo">Add new todo</a>
+    <ul>
+        <li repeat.for="item of todos">
+            ${item.description} - ${item.deadline} - ${item.priority}
+        </li>
+    </ul>
+</template>
+```
+
+todo/index.ts:
+```
+get todos() {
+    return this.todoService.todos;
+}
+```
 
 ## Advanced tutorial
