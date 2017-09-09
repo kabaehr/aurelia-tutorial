@@ -5,4 +5,8 @@ import { TodoService } from './todo-service';
 export class Todo {
     constructor(private todoService: TodoService) {
     }
+
+    get todos() {
+        return this.todoService.todoList;
+    }
 }
