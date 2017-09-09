@@ -1,9 +1,10 @@
 <template>
+    <require from="resources/elements/todo-item"></require>
     <h1>Todos</h1>
     <a route-href="route: add-todo">Add new todo</a>
     <ul>
         <li repeat.for="todo of todos">
-            ${todo.description} - ${todo.deadline} - ${todo.priority}
+            <todo-item item.bind="todo"></todo-item>
         </li>
     </ul>
 </template>
