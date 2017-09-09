@@ -160,7 +160,46 @@ define('routes/todo/todo',["require", "exports", "aurelia-framework", "./todo-se
 
 //# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0lBSUE7UUFDSSxjQUFvQixXQUF3QjtZQUF4QixnQkFBVyxHQUFYLFdBQVcsQ0FBYTtRQUM1QyxDQUFDO1FBRUQsc0JBQUksdUJBQUs7aUJBQVQ7Z0JBQ0ksTUFBTSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDO1lBQ3JDLENBQUM7OztXQUFBO1FBTlEsSUFBSTtZQURoQiw4QkFBVSxFQUFFOzZDQUV3QiwwQkFBVztXQURuQyxJQUFJLENBT2hCO1FBQUQsV0FBQztLQVBELEFBT0MsSUFBQTtJQVBZLG9CQUFJIiwiZmlsZSI6InJvdXRlcy90b2RvL3RvZG8uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBhdXRvaW5qZWN0IH0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xyXG5pbXBvcnQgeyBUb2RvU2VydmljZSB9IGZyb20gJy4vdG9kby1zZXJ2aWNlJztcclxuXHJcbkBhdXRvaW5qZWN0KClcclxuZXhwb3J0IGNsYXNzIFRvZG8ge1xyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSB0b2RvU2VydmljZTogVG9kb1NlcnZpY2UpIHtcclxuICAgIH1cclxuXHJcbiAgICBnZXQgdG9kb3MoKSB7XHJcbiAgICAgICAgcmV0dXJuIHRoaXMudG9kb1NlcnZpY2UudG9kb0xpc3Q7XHJcbiAgICB9XHJcbn0iXSwic291cmNlUm9vdCI6InNyYyJ9
 
+
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJyZXNvdXJjZXMvZWxlbWVudHMvdG9kby1lbGVtZW50LmpzIiwic291cmNlc0NvbnRlbnQiOltdLCJzb3VyY2VSb290Ijoic3JjIn0=
+
+define("resources/elements/todo-element", [],function(){});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('resources/elements/todo-item',["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var TodoItemCustomElement = (function () {
+        function TodoItemCustomElement() {
+            this.item = {};
+        }
+        TodoItemCustomElement.prototype.done = function () {
+            this.item.done = true;
+        };
+        __decorate([
+            aurelia_framework_1.bindable,
+            __metadata("design:type", Object)
+        ], TodoItemCustomElement.prototype, "item", void 0);
+        return TodoItemCustomElement;
+    }());
+    exports.TodoItemCustomElement = TodoItemCustomElement;
+});
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9lbGVtZW50cy90b2RvLWl0ZW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0lBRUE7UUFHSTtZQUNJLElBQUksQ0FBQyxJQUFJLEdBQUcsRUFBRSxDQUFDO1FBQ25CLENBQUM7UUFFRCxvQ0FBSSxHQUFKO1lBQ0ksSUFBSSxDQUFDLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDO1FBQzFCLENBQUM7UUFSUztZQUFULDRCQUFROzsyREFBTTtRQVNuQiw0QkFBQztLQVZELEFBVUMsSUFBQTtJQVZZLHNEQUFxQiIsImZpbGUiOiJyZXNvdXJjZXMvZWxlbWVudHMvdG9kby1pdGVtLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgYmluZGFibGUgfSBmcm9tICdhdXJlbGlhLWZyYW1ld29yayc7XHJcblxyXG5leHBvcnQgY2xhc3MgVG9kb0l0ZW1DdXN0b21FbGVtZW50IHtcclxuICAgIEBiaW5kYWJsZSBpdGVtO1xyXG5cclxuICAgIGNvbnN0cnVjdG9yKCkge1xyXG4gICAgICAgIHRoaXMuaXRlbSA9IHt9O1xyXG4gICAgfVxyXG5cclxuICAgIGRvbmUoKSB7XHJcbiAgICAgICAgdGhpcy5pdGVtLmRvbmUgPSB0cnVlO1xyXG4gICAgfSBcclxufSJdLCJzb3VyY2VSb290Ijoic3JjIn0=
+
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view></template>"; });
 define('text!routes/todo/add.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><h4>Add new todo</h4><form submit.delegate=\"addTodo()\"><input type=\"text\" value.bind=\"description\"> <input type=\"date\" value.bind=\"deadline\"><select value.bind=\"priority\"><option>High</option><option>Medium</option><option>Low</option></select><button type=\"submit\">Add todo</button></form></template>"; });
-define('text!routes/todo/todo.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><a route-href=\"route: add-todo\">Add new todo</a><ul><li repeat.for=\"todo of todos\">${todo.description} - ${todo.deadline} - ${todo.priority}</li></ul></template>"; });
+define('text!routes/todo/todo.html', ['module'], function(module) { module.exports = "<template><require from=\"resources/elements/todo-item\"></require><h3>Todos</h3><a route-href=\"route: add-todo\">Add new todo</a><ul><li repeat.for=\"todo of todos\"><todo-item item.bind=\"todo\"></todo-item></li></ul></template>"; });
+define('text!resources/elements/todo-element.html', ['module'], function(module) { module.exports = "<template>${item.description} - ${item.deadline} - ${item.priority}</template>"; });
+define('text!resources/elements/todo-item.html', ['module'], function(module) { module.exports = "<template><require from=\"./todo-item.css\"></require><span class=\"${item.done ? 'done' : ''}\">${item.description} - ${item.deadline} - ${item.priority} </span><button show.bind=\"!item.done\" click.delegate=\"done()\">Done</button></template>"; });
+define('text!resources/elements/todo-item.css', ['module'], function(module) { module.exports = ".done {\r\n    text-decoration: line-through;\r\n}"; });
 //# sourceMappingURL=app-bundle.js.map
