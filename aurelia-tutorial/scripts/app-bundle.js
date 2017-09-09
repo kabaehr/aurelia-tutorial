@@ -69,23 +69,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('routes/todo/add',["require", "exports", "aurelia-framework", "./todo-service"], function (require, exports, aurelia_framework_1, todo_service_1) {
+define('routes/todo/add',["require", "exports", "aurelia-framework", "aurelia-router", "./todo-service", "./todo-model"], function (require, exports, aurelia_framework_1, aurelia_router_1, todo_service_1, todo_model_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var Add = (function () {
-        function Add(todoService) {
+        function Add(todoService, router) {
             this.todoService = todoService;
+            this.router = router;
+            this.description = '';
+            this.priority = 'Medium';
+            this.deadline = new Date().toISOString().substring(0, 10);
         }
+        Add.prototype.addTodo = function () {
+            var todo = new todo_model_1.TodoModel(this.description, this.deadline, this.priority);
+            this.todoService.todoList.push(todo);
+            this.router.navigateToRoute('todo-list');
+        };
         Add = __decorate([
             aurelia_framework_1.autoinject(),
-            __metadata("design:paramtypes", [todo_service_1.TodoService])
+            __metadata("design:paramtypes", [todo_service_1.TodoService, aurelia_router_1.Router])
         ], Add);
         return Add;
     }());
     exports.Add = Add;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL2FkZC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7SUFJQTtRQUNJLGFBQW9CLFdBQXdCO1lBQXhCLGdCQUFXLEdBQVgsV0FBVyxDQUFhO1FBQzVDLENBQUM7UUFGUSxHQUFHO1lBRGYsOEJBQVUsRUFBRTs2Q0FFd0IsMEJBQVc7V0FEbkMsR0FBRyxDQUdmO1FBQUQsVUFBQztLQUhELEFBR0MsSUFBQTtJQUhZLGtCQUFHIiwiZmlsZSI6InJvdXRlcy90b2RvL2FkZC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGF1dG9pbmplY3QgfSBmcm9tICdhdXJlbGlhLWZyYW1ld29yayc7XHJcbmltcG9ydCB7IFRvZG9TZXJ2aWNlIH0gZnJvbSBcIi4vdG9kby1zZXJ2aWNlXCI7XHJcblxyXG5AYXV0b2luamVjdCgpXHJcbmV4cG9ydCBjbGFzcyBBZGQge1xyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSB0b2RvU2VydmljZTogVG9kb1NlcnZpY2UpIHtcclxuICAgIH1cclxufSJdLCJzb3VyY2VSb290Ijoic3JjIn0=
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL2FkZC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7SUFNQTtRQUtJLGFBQW9CLFdBQXdCLEVBQVUsTUFBYztZQUFoRCxnQkFBVyxHQUFYLFdBQVcsQ0FBYTtZQUFVLFdBQU0sR0FBTixNQUFNLENBQVE7WUFDaEUsSUFBSSxDQUFDLFdBQVcsR0FBRyxFQUFFLENBQUM7WUFDdEIsSUFBSSxDQUFDLFFBQVEsR0FBRyxRQUFRLENBQUM7WUFDekIsSUFBSSxDQUFDLFFBQVEsR0FBRyxJQUFJLElBQUksRUFBRSxDQUFDLFdBQVcsRUFBRSxDQUFDLFNBQVMsQ0FBQyxDQUFDLEVBQUUsRUFBRSxDQUFDLENBQUM7UUFDOUQsQ0FBQztRQUVELHFCQUFPLEdBQVA7WUFDSSxJQUFJLElBQUksR0FBRyxJQUFJLHNCQUFTLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQztZQUN6RSxJQUFJLENBQUMsV0FBVyxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUM7WUFDckMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxlQUFlLENBQUMsV0FBVyxDQUFDLENBQUM7UUFDN0MsQ0FBQztRQWZRLEdBQUc7WUFEZiw4QkFBVSxFQUFFOzZDQU13QiwwQkFBVyxFQUFrQix1QkFBTTtXQUwzRCxHQUFHLENBZ0JmO1FBQUQsVUFBQztLQWhCRCxBQWdCQyxJQUFBO0lBaEJZLGtCQUFHIiwiZmlsZSI6InJvdXRlcy90b2RvL2FkZC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGF1dG9pbmplY3QgfSBmcm9tICdhdXJlbGlhLWZyYW1ld29yayc7XHJcbmltcG9ydCB7IFJvdXRlciB9IGZyb20gJ2F1cmVsaWEtcm91dGVyJztcclxuaW1wb3J0IHsgVG9kb1NlcnZpY2UgfSBmcm9tIFwiLi90b2RvLXNlcnZpY2VcIjtcclxuaW1wb3J0IHsgVG9kb01vZGVsIH0gZnJvbSBcIi4vdG9kby1tb2RlbFwiO1xyXG5cclxuQGF1dG9pbmplY3QoKVxyXG5leHBvcnQgY2xhc3MgQWRkIHtcclxuICAgIGRlc2NyaXB0aW9uOiBzdHJpbmc7XHJcbiAgICBwcmlvcml0eTogc3RyaW5nO1xyXG4gICAgZGVhZGxpbmU6IHN0cmluZztcclxuXHJcbiAgICBjb25zdHJ1Y3Rvcihwcml2YXRlIHRvZG9TZXJ2aWNlOiBUb2RvU2VydmljZSwgcHJpdmF0ZSByb3V0ZXI6IFJvdXRlcikge1xyXG4gICAgICAgIHRoaXMuZGVzY3JpcHRpb24gPSAnJztcclxuICAgICAgICB0aGlzLnByaW9yaXR5ID0gJ01lZGl1bSc7XHJcbiAgICAgICAgdGhpcy5kZWFkbGluZSA9IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKS5zdWJzdHJpbmcoMCwgMTApO1xyXG4gICAgfVxyXG5cclxuICAgIGFkZFRvZG8oKSB7XHJcbiAgICAgICAgbGV0IHRvZG8gPSBuZXcgVG9kb01vZGVsKHRoaXMuZGVzY3JpcHRpb24sIHRoaXMuZGVhZGxpbmUsIHRoaXMucHJpb3JpdHkpO1xyXG4gICAgICAgIHRoaXMudG9kb1NlcnZpY2UudG9kb0xpc3QucHVzaCh0b2RvKTtcclxuICAgICAgICB0aGlzLnJvdXRlci5uYXZpZ2F0ZVRvUm91dGUoJ3RvZG8tbGlzdCcpO1xyXG4gICAgfVxyXG59Il0sInNvdXJjZVJvb3QiOiJzcmMifQ==
 
 define('routes/todo/todo-model',["require", "exports"], function (require, exports) {
     "use strict";
@@ -133,6 +142,13 @@ define('routes/todo/todo',["require", "exports", "aurelia-framework", "./todo-se
         function Todo(todoService) {
             this.todoService = todoService;
         }
+        Object.defineProperty(Todo.prototype, "todos", {
+            get: function () {
+                return this.todoService.todoList;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Todo = __decorate([
             aurelia_framework_1.autoinject(),
             __metadata("design:paramtypes", [todo_service_1.TodoService])
@@ -142,9 +158,9 @@ define('routes/todo/todo',["require", "exports", "aurelia-framework", "./todo-se
     exports.Todo = Todo;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0lBSUE7UUFDSSxjQUFvQixXQUF3QjtZQUF4QixnQkFBVyxHQUFYLFdBQVcsQ0FBYTtRQUM1QyxDQUFDO1FBRlEsSUFBSTtZQURoQiw4QkFBVSxFQUFFOzZDQUV3QiwwQkFBVztXQURuQyxJQUFJLENBR2hCO1FBQUQsV0FBQztLQUhELEFBR0MsSUFBQTtJQUhZLG9CQUFJIiwiZmlsZSI6InJvdXRlcy90b2RvL3RvZG8uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBhdXRvaW5qZWN0IH0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xyXG5pbXBvcnQgeyBUb2RvU2VydmljZSB9IGZyb20gJy4vdG9kby1zZXJ2aWNlJztcclxuXHJcbkBhdXRvaW5qZWN0KClcclxuZXhwb3J0IGNsYXNzIFRvZG8ge1xyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSB0b2RvU2VydmljZTogVG9kb1NlcnZpY2UpIHtcclxuICAgIH1cclxufSJdLCJzb3VyY2VSb290Ijoic3JjIn0=
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0lBSUE7UUFDSSxjQUFvQixXQUF3QjtZQUF4QixnQkFBVyxHQUFYLFdBQVcsQ0FBYTtRQUM1QyxDQUFDO1FBRUQsc0JBQUksdUJBQUs7aUJBQVQ7Z0JBQ0ksTUFBTSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDO1lBQ3JDLENBQUM7OztXQUFBO1FBTlEsSUFBSTtZQURoQiw4QkFBVSxFQUFFOzZDQUV3QiwwQkFBVztXQURuQyxJQUFJLENBT2hCO1FBQUQsV0FBQztLQVBELEFBT0MsSUFBQTtJQVBZLG9CQUFJIiwiZmlsZSI6InJvdXRlcy90b2RvL3RvZG8uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBhdXRvaW5qZWN0IH0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xyXG5pbXBvcnQgeyBUb2RvU2VydmljZSB9IGZyb20gJy4vdG9kby1zZXJ2aWNlJztcclxuXHJcbkBhdXRvaW5qZWN0KClcclxuZXhwb3J0IGNsYXNzIFRvZG8ge1xyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSB0b2RvU2VydmljZTogVG9kb1NlcnZpY2UpIHtcclxuICAgIH1cclxuXHJcbiAgICBnZXQgdG9kb3MoKSB7XHJcbiAgICAgICAgcmV0dXJuIHRoaXMudG9kb1NlcnZpY2UudG9kb0xpc3Q7XHJcbiAgICB9XHJcbn0iXSwic291cmNlUm9vdCI6InNyYyJ9
 
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view></template>"; });
-define('text!routes/todo/add.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><h4>Add new todo</h4><form><input type=\"text\"> <input type=\"date\"><select><option>High</option><option>Medium</option><option>Low</option></select><button type=\"submit\">Add todo</button></form></template>"; });
-define('text!routes/todo/todo.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><a route-href=\"route: add-todo\">Add new todo</a></template>"; });
+define('text!routes/todo/add.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><h4>Add new todo</h4><form submit.delegate=\"addTodo()\"><input type=\"text\" value.bind=\"description\"> <input type=\"date\" value.bind=\"deadline\"><select value.bind=\"priority\"><option>High</option><option>Medium</option><option>Low</option></select><button type=\"submit\">Add todo</button></form></template>"; });
+define('text!routes/todo/todo.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><a route-href=\"route: add-todo\">Add new todo</a><ul><li repeat.for=\"todo of todos\">${todo.description} - ${todo.deadline} - ${todo.priority}</li></ul></template>"; });
 //# sourceMappingURL=app-bundle.js.map

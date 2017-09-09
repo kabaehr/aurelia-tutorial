@@ -1,10 +1,10 @@
 <template>
     <h1>Todos</h1>
     <h2>Add new todo</h2>
-    <form>
-        <input type="text">
-        <input type="date">
-        <select>
+    <form submit.delegate="addTodo()">
+        <input type="text" value.bind="description">
+        <input type="date" value.bind="deadline">
+        <select value.bind="priority">
             <option>High</option>
             <option>Medium</option>
             <option>Low</option>
