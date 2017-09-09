@@ -65,4 +65,81 @@ export class Todo {
 }
 ```
 
+### 3. Dependency injection, services and models
+
+8. Add `routes/todo/todo-model.ts` with the following content:
+
+```
+export class TodoModel {
+    constructor(private description: string, private deadline: string, private priority: string) {
+    }
+}
+```
+
+9. Add a new component with `routes/todo/add.html` and `routes/todo/add.ts`.
+
+add.html:
+```
+<template>
+    <h3>Todos</h3>
+    <h4>Add new todo</h4>
+    <form>
+        <input type="text">
+        <input type="date">
+        <select>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <button type="submit">Add todo</button>
+    </form>
+</template>
+```
+
+add.ts:
+```
+export class Add {
+}
+```
+
+10. Add `routes/todo/todo-service.ts` with the following content:
+
+```
+import { TodoModel } from './todo-model';
+
+export class TodoService {
+    todos: Array<TodoModel> = [];
+
+    constructor() {
+    }
+}
+```
+
+11. Add TodoService injection to `routes/todo/todo.ts` and `routes/todo/add.ts`. To do this, extend both files with the following parts:
+
+At the top of the file add:
+```
+import { TodoService } from './todo-service';
+```
+
+Import the `autoinject` decorator and at the top of each class and use it above the class declaration:
+```
+import { autoinject } from 'aurelia-framework';
+
+@autoinject()
+```
+
+Add/extend the constructor for each class:
+```
+constructor(private todoService: TodoService) {
+}
+```
+
+12. Add navigation from todo to add-todo. Add the following in `routes/todo/todo.html`:
+
+```
+<a route-href="route: add-todo">Add new todo</a>
+```
+
 ## Advanced tutorial
+
