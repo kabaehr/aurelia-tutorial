@@ -34,4 +34,35 @@ Once you have those prerequisites installed you can install the Aurelia CLI itse
 2. Change directory to the newly created `aurelia-app` folder and run `au run --watch`.
 3. Wait for the build to be finished, open a web browser and navigate to [http://localhost:9000](http://localhost:9000). You should see a web page displaying "Hello World!".
 
+### 2. Router setup and first module
+
+4. Replace `<h1>${message}</h1>` in `app.html` with `<router-view></router-view>`.
+5. Add `configureRouter(config, router)` function in `app.ts` and remove the message. Full code for the function:
+
+```
+  configureRouter(config: RouterConfiguration, router: Router): void {
+    this.router = router;
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['', 'todo'], name: 'todo-list', moduleId: 'routes/todo/todo' },
+      { route: 'todo/add', name: 'add-todo', moduleId: 'routes/todo/add' }
+    ]);
+  }
+```
+
+6. Add `routes/todo/todo.html` with the following content:
+
+```
+<template>
+    <h3>Todos</h3>
+</template>
+```
+
+7. Add `routes/todo/todo.ts` with the following content:
+
+```
+export class Todo {
+}
+```
+
 ## Advanced tutorial
