@@ -108,29 +108,43 @@ define('routes/todo/todo-service',["require", "exports"], function (require, exp
     Object.defineProperty(exports, "__esModule", { value: true });
     var TodoService = (function () {
         function TodoService() {
-            this.todos = [];
+            this.todoList = [];
         }
         return TodoService;
     }());
     exports.TodoService = TodoService;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8tc2VydmljZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFFQTtRQUdJO1lBRkEsVUFBSyxHQUFxQixFQUFFLENBQUM7UUFHN0IsQ0FBQztRQUNMLGtCQUFDO0lBQUQsQ0FMQSxBQUtDLElBQUE7SUFMWSxrQ0FBVyIsImZpbGUiOiJyb3V0ZXMvdG9kby90b2RvLXNlcnZpY2UuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBUb2RvTW9kZWwgfSBmcm9tICcuL3RvZG8tbW9kZWwnO1xyXG5cclxuZXhwb3J0IGNsYXNzIFRvZG9TZXJ2aWNlIHtcclxuICAgIHRvZG9zOiBBcnJheTxUb2RvTW9kZWw+ID0gW107XHJcblxyXG4gICAgY29uc3RydWN0b3IoKSB7XHJcbiAgICB9XHJcbn0iXSwic291cmNlUm9vdCI6InNyYyJ9
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8tc2VydmljZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFFQTtRQUdJO1lBRkEsYUFBUSxHQUFxQixFQUFFLENBQUM7UUFHaEMsQ0FBQztRQUNMLGtCQUFDO0lBQUQsQ0FMQSxBQUtDLElBQUE7SUFMWSxrQ0FBVyIsImZpbGUiOiJyb3V0ZXMvdG9kby90b2RvLXNlcnZpY2UuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBUb2RvTW9kZWwgfSBmcm9tICcuL3RvZG8tbW9kZWwnO1xyXG5cclxuZXhwb3J0IGNsYXNzIFRvZG9TZXJ2aWNlIHtcclxuICAgIHRvZG9MaXN0OiBBcnJheTxUb2RvTW9kZWw+ID0gW107XHJcblxyXG4gICAgY29uc3RydWN0b3IoKSB7XHJcbiAgICB9XHJcbn0iXSwic291cmNlUm9vdCI6InNyYyJ9
 
-define('routes/todo/todo',["require", "exports"], function (require, exports) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('routes/todo/todo',["require", "exports", "aurelia-framework", "./todo-service"], function (require, exports, aurelia_framework_1, todo_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var Todo = (function () {
-        function Todo() {
+        function Todo(todoService) {
+            this.todoService = todoService;
         }
+        Todo = __decorate([
+            aurelia_framework_1.autoinject(),
+            __metadata("design:paramtypes", [todo_service_1.TodoService])
+        ], Todo);
         return Todo;
     }());
     exports.Todo = Todo;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0lBQUE7UUFBQTtRQUNBLENBQUM7UUFBRCxXQUFDO0lBQUQsQ0FEQSxBQUNDLElBQUE7SUFEWSxvQkFBSSIsImZpbGUiOiJyb3V0ZXMvdG9kby90b2RvLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNsYXNzIFRvZG8ge1xyXG59Il0sInNvdXJjZVJvb3QiOiJzcmMifQ==
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy90b2RvL3RvZG8udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7O0lBSUE7UUFDSSxjQUFvQixXQUF3QjtZQUF4QixnQkFBVyxHQUFYLFdBQVcsQ0FBYTtRQUM1QyxDQUFDO1FBRlEsSUFBSTtZQURoQiw4QkFBVSxFQUFFOzZDQUV3QiwwQkFBVztXQURuQyxJQUFJLENBR2hCO1FBQUQsV0FBQztLQUhELEFBR0MsSUFBQTtJQUhZLG9CQUFJIiwiZmlsZSI6InJvdXRlcy90b2RvL3RvZG8uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBhdXRvaW5qZWN0IH0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xyXG5pbXBvcnQgeyBUb2RvU2VydmljZSB9IGZyb20gJy4vdG9kby1zZXJ2aWNlJztcclxuXHJcbkBhdXRvaW5qZWN0KClcclxuZXhwb3J0IGNsYXNzIFRvZG8ge1xyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSB0b2RvU2VydmljZTogVG9kb1NlcnZpY2UpIHtcclxuICAgIH1cclxufSJdLCJzb3VyY2VSb290Ijoic3JjIn0=
 
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view></template>"; });
 define('text!routes/todo/add.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><h4>Add new todo</h4><form><input type=\"text\"> <input type=\"date\"><select><option>High</option><option>Medium</option><option>Low</option></select><button type=\"submit\">Add todo</button></form></template>"; });
-define('text!routes/todo/todo.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3></template>"; });
+define('text!routes/todo/todo.html', ['module'], function(module) { module.exports = "<template><h3>Todos</h3><a route-href=\"route: add-todo\">Add new todo</a></template>"; });
 //# sourceMappingURL=app-bundle.js.map
