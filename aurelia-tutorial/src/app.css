@@ -1,0 +1,59 @@
+body {
+    font-size: 1.05em;
+    background-color: #fafafa;
+    font-family: sans-serif;
+    padding: 20px;
+    color: #333;
+}
+
+a {
+    color: #ed2b88;
+    text-decoration: none;
+}
+
+input, select, button {
+    border-radius: 7px;
+    height: 45px;
+    border: 1px solid #dfdfdf;
+    margin-right: 10px;
+    padding: 0px 6px;
+}
+
+input[type="date"] {
+    height: 43px;
+    width: 145px;
+    font-family: sans-serif;
+}
+
+input[type="text"] {
+    width: 350px;
+    height: 42px;
+}
+
+select {
+    width: 145px;
+    height: 45px;
+}
+
+button {
+    width: 145px;
+    height: 45px;
+    border: 2px solid #ed2b88;
+    background-color: white;
+    cursor: pointer;
+}
+
+li {
+    border-bottom: 1px #ddd dotted;
+    list-style: none;
+    line-height: 45px;
+    padding: 10px 0px;
+}
+
+li:first-of-type {
+    border-top: 1px #ddd dotted;
+}
+
+ul {
+    padding-left: 0px;
+}
