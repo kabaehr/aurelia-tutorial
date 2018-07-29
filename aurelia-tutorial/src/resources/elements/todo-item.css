@@ -1,3 +1,22 @@
-.done {
+todo-item {
+    display: flex;
+}
+
+todo-item .done {
     text-decoration: line-through;
+}
+
+todo-item a {
+    color: #ed2b88;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+todo-item span {
+    line-height: 45px;
+    flex-grow: 1;
+}
+
+todo-item button {
+
 }
